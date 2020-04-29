@@ -22,13 +22,19 @@ class CategoryController extends ApiBaseController
         $user_categories = Category::whereIn('id',$user_categories_ids)->paginate($perPage);
         return $this->successResponse(['user_categories' => $user_categories] );
     }
-    public function chooseOrRemoveCategory(Request $request){
+    public function chooseOrRemoveCategory(Request $request)
+    {
 
         $user = Auth::user();
-        $user_categories_ids = UserCategory::where('user_id', $user->id)->get('category_id')->toArray();
+        $user_categories = UserCategory::where('user_id', $user->id)->get();
+        $old_ids = array();
+        foreach ($user_categories as $category) {
+
+            array_push($old_ids, $category->category_id);
+        }
         $ids = $request->categories_ids;
         foreach ($ids as $id) {
-            if(in_array($id,$user_categories_ids) == false)
+            if(in_array($id,$old_ids) == false)
             {
                 $user_category = UserCategory::create([
                     'user_id' => $user->id,
@@ -40,7 +46,7 @@ class CategoryController extends ApiBaseController
 
         }
 
-        foreach ($user_categories_ids as $id) {
+        foreach ($old_ids as $id) {
             if(in_array($id,$ids) == false)
             {
                 $old_user_category = UserCategory::where('user_id',$user->id)->where('category_id',$id);
@@ -48,9 +54,8 @@ class CategoryController extends ApiBaseController
 
             }
 
-        }
+    }
 
-//        return $this->successResponse(['message' => $user_categories_ids]);
         return $this->successResponse(['message' => 'Successful operation']);
 
 
