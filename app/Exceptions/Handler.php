@@ -55,7 +55,18 @@ class Handler extends ExceptionHandler
 
     }
 
+    private function handleWebException($request, Exception $exception)
+    {
 
+        if ($exception instanceof WebServiceException) {
+            return redirect()->back()->withErrors($exception->getValidator())->withInput();
+        }
+
+        if ($exception instanceof WebServiceErroredException) {
+            return redirect()->back()->with('error', $exception->getExplanation());
+        }
+        return parent::render($request, $exception);
+    }
 
 
     private function handleApiException($request, Exception $exception)
