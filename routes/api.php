@@ -1,18 +1,26 @@
 <?php
 
-use Illuminate\Http\Request;
+Route::group(['middleware' => 'api'], function () {
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+    //UNAUTHENTICATED
+    Route::group(['namespace' => 'Api\Auth'], function () {
+        Route::post('/login', ['uses' => 'AuthController@login']);
+        Route::post('/register', ['uses' => 'AuthController@register']);
+        Route::post('/code/send', ['uses' => 'CodeController@sendCode']);
+        Route::post('/code/check', ['uses' => 'CodeController@checkCode']);
+        Route::post('/code/reset', ['uses' => 'CodeController@resetCode']);
+        Route::post('/login/check', ['uses' => 'AuthController@checkLogin']);
+    });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+    Route::group(['namespace' => 'Api'], function () {
+
+        Route::get('/categories', ['uses' => 'CategoryController@getCategories']);
+        Route::group(['middleware' => 'auth:api'], function () {
+            Route::get('/user/categories', ['uses' => 'CategoryController@getUserCategories']);
+            Route::post('/user/categories/add', ['uses' => 'CategoryController@chooseOrRemoveCategory']);
+        });
+
+    });
 });
+
