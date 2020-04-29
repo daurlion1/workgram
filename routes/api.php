@@ -16,9 +16,13 @@ Route::group(['middleware' => 'api'], function () {
     Route::group(['namespace' => 'Api'], function () {
 
         Route::get('/categories', ['uses' => 'CategoryController@getCategories']);
+        Route::get('/projects', ['uses' => 'ProjectController@getProjectsByCategory']);
         Route::group(['middleware' => 'auth:api'], function () {
             Route::get('/user/categories', ['uses' => 'CategoryController@getUserCategories']);
             Route::post('/user/categories/add', ['uses' => 'CategoryController@chooseOrRemoveCategory']);
+
+            Route::get('/user/projects', ['uses' => 'ProjectController@getUserProjects']);
+
         });
 
     });
