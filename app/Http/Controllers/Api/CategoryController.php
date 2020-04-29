@@ -25,7 +25,7 @@ class CategoryController extends ApiBaseController
     public function chooseOrRemoveCategory(Request $request){
 
         $user = Auth::user();
-        $user_categories_ids = UserCategory::where('user_id', $user->id)->get('category_id');
+        $user_categories_ids = UserCategory::where('user_id', $user->id)->get('category_id')->toArray();
         $ids = $request->categories_ids;
         foreach ($ids as $id) {
             if(in_array($id,$user_categories_ids) == false)
@@ -40,18 +40,18 @@ class CategoryController extends ApiBaseController
 
         }
 
-//        foreach ($user_categories_ids as $id) {
-//            if(in_array($id,$ids) == false)
-//            {
-//                $old_user_category = UserCategory::where('user_id',$user->id)->where('category_id',$id)->get();
-//                $old_user_category->delete();
-//
-//            }
-//
-//        }
+        foreach ($user_categories_ids as $id) {
+            if(in_array($id,$ids) == false)
+            {
+                $old_user_category = UserCategory::where('user_id',$user->id)->where('category_id',$id);
+                $old_user_category->delete();
 
-        return $this->successResponse(['message' => $user_categories_ids]);
-//        return $this->successResponse(['message' => 'Successful operation']);
+            }
+
+        }
+
+//        return $this->successResponse(['message' => $user_categories_ids]);
+        return $this->successResponse(['message' => 'Successful operation']);
 
 
     }
