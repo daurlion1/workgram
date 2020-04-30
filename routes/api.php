@@ -22,6 +22,8 @@ Route::group(['middleware' => 'api'], function () {
             Route::post('/user/categories/add', ['uses' => 'CategoryController@chooseOrRemoveCategory']);
 
             Route::get('/user/projects', ['uses' => 'ProjectController@getUserProjects']);
+            Route::post('/create/project', ['uses' => 'ProjectController@createProject']);
+
 
         });
 

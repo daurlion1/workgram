@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
+    public const CREATED = 0;
+    public const IN_PROCESS = 1;
+    public const COMPLETED = 2;
+
+
     protected $fillable = [
         'name',
         'category_id',
