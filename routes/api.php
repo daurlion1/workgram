@@ -25,6 +25,7 @@ Route::group(['middleware' => 'api'], function () {
             Route::post('/create/project', ['uses' => 'ProjectController@createProject']);
 
             Route::post('/send/request', ['uses' => 'RequestController@sendRequest']);
+            Route::post('/accept/request', ['uses' => 'RequestController@acceptRequest']);
 
 
         });

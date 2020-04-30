@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Exceptions\ApiServiceException;
+use App\Http\Controllers\ApiBaseController;
 use App\Http\Errors\ErrorCode;
 use App\Models\Project;
 use App\Models\ProjectRequest;
@@ -11,7 +12,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Support\Facades\DB;
 
-class RequestController extends Controller
+class RequestController extends ApiBaseController
 {
     public function sendRequest(Request $request)
     {
@@ -44,5 +45,55 @@ class RequestController extends Controller
             $message = "Упешно отправлен";
         }
         return $message;
+    }
+
+    public function acceptRequest(Request $request)
+    {
+        $user = Auth::user();
+        $project_request_id = $request->request_id;
+        $project_request = ProjectRequest::where('id',$project_request_id)->first();
+
+        if (!$project_request) throw new ApiServiceException(404, false, [
+            'errors' => [
+                'Такого запроса не существует!'
+            ],
+            'errorCode' => ErrorCode::RESOURCE_NOT_FOUND
+        ]);
+        $is_accepted = $request->is_accepted;
+        $project = Project::find($project_request->project_id);
+
+        if($project_request->is_to_specific_user == false and $user->id == $project->creator_id) {
+
+            $project_request->update([
+                'is_accepted' => $is_accepted,
+            ]);
+
+            if($is_accepted == true){
+
+                $project = Project::find($project_request->project_id);
+                $project->update([
+                    'implementer_id' => $project_request->user_id,
+                ]);
+            }
+
+        }
+        elseif ($project_request->is_to_specific_user == true and $user->id == $project_request->user_id){
+
+            $project_request->update([
+                'is_accepted' => $is_accepted,
+            ]);
+
+            if($is_accepted == true){
+
+                $project = Project::find($project_request->project_id);
+                $project->update([
+                    'implementer_id' => $user->id,
+                ]);
+            }
+
+        }
+        return $this->successResponse(['message' => "Статус успешно изменен"]);
+
+
     }
 }
