@@ -44,7 +44,8 @@ class RequestController extends ApiBaseController
             ]);
             $message = "Упешно отправлен";
         }
-        return $message;
+        return $this->successResponse(['message' => $message]);
+
     }
 
     public function acceptRequest(Request $request)

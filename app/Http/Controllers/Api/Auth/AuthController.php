@@ -161,7 +161,7 @@ class AuthController extends ApiBaseController
         if ($request->device_token) {
             $this->setDeviceToken($user, $request->device_token, $request->platform);
         }
-        return $user->current_token;
+        return $this->successResponse(['token' => $user->current_token]);
     }
 
 

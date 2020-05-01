@@ -70,7 +70,7 @@ class ProjectController extends ApiBaseController
         ]);
 
             DB::commit();
-            return "Успешно создан!";
+            return $this->successResponse(['message' => "Проект успешно создан"]);
         } catch(\Exception $exception){
 
             DB::rollBack();

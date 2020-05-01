@@ -6,10 +6,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::group(['namespace' => 'Api\Auth'], function () {
         Route::post('/login', ['uses' => 'AuthController@login']);
         Route::post('/register', ['uses' => 'AuthController@register']);
-        Route::post('/code/send', ['uses' => 'CodeController@sendCode']);
-        Route::post('/code/check', ['uses' => 'CodeController@checkCode']);
-        Route::post('/code/reset', ['uses' => 'CodeController@resetCode']);
-        Route::post('/login/check', ['uses' => 'AuthController@checkLogin']);
+//        Route::post('/login/check', ['uses' => 'AuthController@checkLogin']);
     });
 
 
@@ -17,6 +14,8 @@ Route::group(['middleware' => 'api'], function () {
 
         Route::get('/categories', ['uses' => 'CategoryController@getCategories']);
         Route::get('/projects', ['uses' => 'ProjectController@getProjectsByCategory']);
+        Route::get('/users/by/category/{category_id}', ['uses' => 'UserController@getUsersByCategory'])->where('id', '[0-9]+');
+
         Route::group(['middleware' => 'auth:api'], function () {
             Route::get('/user/categories', ['uses' => 'CategoryController@getUserCategories']);
             Route::post('/user/categories/add', ['uses' => 'CategoryController@chooseOrRemoveCategory']);
@@ -26,6 +25,9 @@ Route::group(['middleware' => 'api'], function () {
 
             Route::post('/send/request', ['uses' => 'RequestController@sendRequest']);
             Route::post('/accept/request', ['uses' => 'RequestController@acceptRequest']);
+
+
+
 
 
         });
