@@ -11,7 +11,6 @@
 |
 */
 
-//Route::get('/', 'HomeController@welcome')->name('welcome');
 
 Route::get('/secure/config/migrate-refresh', ['uses' => 'ConfigController@migrateRefresh']);
 Route::get('/secure/config/migrate', ['uses' => 'ConfigController@migrate']);
@@ -31,6 +30,8 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+
 
     Route::get('/home', 'HomeController@index')->name('home');
     Route::group(['namespace' => 'Web\Admin'], function () {
