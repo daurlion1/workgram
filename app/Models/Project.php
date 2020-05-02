@@ -22,7 +22,8 @@ class Project extends Model
         'longitude',
         'status',
         'start',
-        'finish'
+        'finish',
+
     ];
 
     public function creator()
@@ -30,10 +31,10 @@ class Project extends Model
         return $this->hasOne(User::class, 'id', 'creator_id');
     }
 
-    public function implementer()
-    {
-        return $this->hasOne(User::class, 'id', 'implementer_id');
-    }
+//    public function implementer()
+//    {
+//        return $this->hasOne(User::class, 'id', 'implementer_id');
+//    }
 
     public function category()
     {

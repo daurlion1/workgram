@@ -20,8 +20,8 @@
                                     <th>Статус</th>
                                     <th>Старт</th>
                                     <th>Финиш</th>
-                                    <th>Создатель</th>
-                                    <th>Исполнитель</th>
+{{--                                    <th>Создатель</th>--}}
+{{--                                    <th>Исполнитель</th>--}}
 
                                 </tr>
                                 </thead>
@@ -47,8 +47,8 @@
                                             @endif</td>
                                         <td>{{$project->start}}</td>
                                         <td>{{$project->finish}}</td>
-                                        <td>{{$project->creator->name}}</td>
-                                        <td>{{$project->implementer->name}}</td>
+{{--                                        <td>{{$project->creator->lastname}}</td>--}}
+{{--                                        <td>{{$project->implementer->nickname}}</td>--}}
 
                                     </tr>
                                 @endforeach
