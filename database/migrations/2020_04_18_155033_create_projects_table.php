@@ -33,8 +33,8 @@ class CreateProjectsTable extends Migration
             $table->string('latitude');
             $table->string('longitude');
             $table->integer('status');
-            $table->timestamp('start');
-            $table->timestamp('finish');
+            $table->timestamp('start')->nullable(true);
+            $table->timestamp('finish')->nullable(true);
 
             $table->timestamps();
         });
