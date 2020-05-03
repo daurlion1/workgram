@@ -33,7 +33,7 @@
 <!-- Library for adding dinamically elements -->
 <script src="{{asset('admin/js/plugins/arrive.min.js')}}"></script>
 <!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+{{--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>--}}
 <!-- Chartist JS -->
 <script src="{{asset('admin/js/plugins/chartist.min.js')}}"></script>
 <!--  Notifications Plugin    -->
@@ -241,9 +241,9 @@
 </script>
 
 
-<script src="{{asset('assets/vendor/select2/select2.js')}}"></script>
-<script src="{{asset('assets/vendor/jquery-datatables/media/js/jquery.dataTables.js')}}"></script>
-<script src="{{asset('assets/vendor/jquery-datatables-bs3/assets/js/datatables.js')}}"></script>
+{{--<script src="{{asset('assets/vendor/select2/select2.js')}}"></script>--}}
+{{--<script src="{{asset('assets/vendor/jquery-datatables/media/js/jquery.dataTables.js')}}"></script>--}}
+{{--<script src="{{asset('assets/vendor/jquery-datatables-bs3/assets/js/datatables.js')}}"></script>--}}
 
 <script>
     (function ($) {

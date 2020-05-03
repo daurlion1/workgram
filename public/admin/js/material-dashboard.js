@@ -459,9 +459,11 @@ md = {
 
       nav_content = '<ul class="nav navbar-nav nav-mobile-menu">' + nav_content + '</ul>';
 
-      navbar_form = $('nav').find('.navbar-form').get(0).outerHTML;
+      navbar_form = $('nav').find('.navbar-form').get(0);
+        // navbar_form = $('nav').find('.navbar-form').get(0).outerHTML;
 
-      $sidebar_nav = $sidebar_wrapper.find(' > .nav');
+
+        $sidebar_nav = $sidebar_wrapper.find(' > .nav');
 
       // insert the navbar form before the sidebar list
       $nav_content = $(nav_content);
