@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Api\Auth;
+namespace App\Http\Requests\API\Auth;
 
-use App\Http\Requests\Api\ApiBaseRequest;
+use App\Http\Requests\API\ApiBaseRequest;
 
 class CheckLoginExistenceApiRequest extends ApiBaseRequest
 {
