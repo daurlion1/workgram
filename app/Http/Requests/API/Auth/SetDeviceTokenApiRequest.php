@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Requests\Api\V1\Auth;
+namespace App\Http\Requests\Api\Auth;
 
 use App\Http\Requests\Api\ApiBaseRequest;
-use App\Models\Profiles\User;
+use App\Models\User;
 
 class SetDeviceTokenApiRequest extends ApiBaseRequest
 {

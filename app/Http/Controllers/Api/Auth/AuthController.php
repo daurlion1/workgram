@@ -8,17 +8,18 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Exceptions\ApiServiceException;
 use App\Http\Controllers\ApiBaseController;
 use App\Http\Errors\ErrorCode;
-use App\Http\Requests\Api\V1\Auth\AuthorizedResetPasswordApiRequest;
-use App\Http\Requests\Api\V1\Auth\CheckLoginExistenceApiRequest;
-use App\Http\Requests\Api\V1\Auth\LoginApiRequest;
+use App\Http\Requests\Api\Auth\AuthorizedResetPasswordApiRequest;
+use App\Http\Requests\Api\Auth\CheckLoginExistenceApiRequest;
+use App\Http\Requests\Api\Auth\LoginApiRequest;
 use App\Http\Requests\Api\Auth\RegisterApiRequest;
-use App\Http\Requests\Api\V1\Auth\SetDeviceTokenApiRequest;
+use App\Http\Requests\Api\Auth\SetDeviceTokenApiRequest;
 use App\Http\Utils\ApiUtil;
 use App\Models\City;
 use App\Models\Role;
 use App\Models\User;
 use App\Utils\StaticConstants;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\JWTAuth;
 
@@ -165,22 +166,44 @@ class AuthController extends ApiBaseController
     }
 
 
-    public function checkLogin(CheckLoginExistenceApiRequest $request)
-    {
-        return $this->successResponse(['is_exists' => $this->authService->checkLoginExistence($request)]);
-    }
+//    public function checkLogin(CheckLoginExistenceApiRequest $request)
+//    {
+//        return $this->successResponse(['is_exists' => $this->authService->checkLoginExistence($request)]);
+//    }
 
-    public function setDeviceToken(SetDeviceTokenApiRequest $request)
+    public function setDeviceToken($user, $deviceToken, $platform)
+
     {
-        $this->authService->setDeviceToken(Auth::user(), $request->device_token, $request->platform);
+        DB::beginTransaction();
+        try {
+//            User::find('device_token', $deviceToken)->update([
+//                'device_token' => null,
+//                'platform' => null
+//            ]);
+            $user->update([
+                'device_token' => $deviceToken,
+                'platform' => $platform
+            ]);
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            throw new ApiServiceException(400, false, [
+                'errors' => [
+                    'Error occured when updating device token',
+                    $exception->getMessage()
+                ],
+                'errorCode' => ErrorCode::SYSTEM_ERROR
+            ]);
+        }
+
         return $this->successResponse(['message' => 'Device token set']);
     }
 
-    public function resetPassword(AuthorizedResetPasswordApiRequest $request)
-    {
-        $this->authService->authorizedResetPassword(Auth::user(), $request->password, $request->new_password);
-        return $this->successResponse(['message' => 'Password updated']);
-    }
+//    public function resetPassword(AuthorizedResetPasswordApiRequest $request)
+//    {
+//        $this->authService->authorizedResetPassword(Auth::user(), $request->password, $request->new_password);
+//        return $this->successResponse(['message' => 'Password updated']);
+//    }
 
 
     public function checkPassword($password, $hashedPassword): bool
