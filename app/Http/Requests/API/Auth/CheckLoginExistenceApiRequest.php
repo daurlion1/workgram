@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\API\Auth;
 
-use App\Http\Requests\API\ApiBaseRequest;
+use App\Http\Requests\ApiBaseRequest;
 
 class CheckLoginExistenceApiRequest extends ApiBaseRequest
 {

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Api\Auth;
 
-use App\Http\Requests\Api\ApiBaseRequest;
+use App\Http\Requests\ApiBaseRequest;
 
 class RegisterApiRequest extends ApiBaseRequest
 {

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Api\Auth;
 
-use App\Http\Requests\Api\ApiBaseRequest;
+use App\Http\Requests\ApiBaseRequest;
 use App\Models\User;
 
 class SetDeviceTokenApiRequest extends ApiBaseRequest
