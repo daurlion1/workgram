@@ -64,6 +64,15 @@ class ConfigController extends WebBaseController
         }
     }
 
+    public function cacheClear(Request $request)
+    {
+        if ($request->token == 'kasya') {
+            return Artisan::call('cache:clear');
+        } else {
+            return 'fail';
+        }
+    }
+
     public function dbSeed(Request $request)
     {
         if ($request->token == 'kasya') {
