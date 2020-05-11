@@ -952,3 +952,45 @@
         "success": true
     }
 ```
+### Получение профиля пользователя
+#### URL: http://127.0.0.1:8000/api/profile
+```
+    GET Request
+        
+    Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuc2VuZC5tZVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1Nzk2MjcxNjYsImV4cCI6MTU3OTYzMDc2NiwibmJmIjoxNTc5NjI3MTY2LCJqdGkiOiJPeUg5T3hZcVY2d0d6QllyIiwic3ViIjoxLCJwcnYiOiJlZTVhYzY5NDI5YzU1NmQ3NWRiZTdmZjRlNThiOTdjZDRmNzE0MmViIn0.Ykb0nBteVz3KBVmfxAcPHtgA9JPyfD3CArwSL4P3onA
+
+
+    RESPONSE
+    {
+        "profile": {
+            "id": 14,
+            "avatar": "images/avatars/1589187950f0ca18f2-70c5-4dae-a212-210ceb6c236bimg.png",
+            "name": "Dauren",
+            "surname": "Kakimbekov",
+            "created": "2020-04-28T05:38:21.000000Z",
+            "rating_score": 0,
+            "city": "Almaty",
+            "nickname": "daurlion1",
+            "description": "Programmer"
+        },
+        "success": true
+    }
+```
+### Добавить  фото в профайле
+#### URL: http://127.0.0.1:8000/api/profile/avatar
+````
+    Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuc2VuZC5tZVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1Nzk2MjcxNjYsImV4cCI6MTU3OTYzMDc2NiwibmJmIjoxNTc5NjI3MTY2LCJqdGkiOiJPeUg5T3hZcVY2d0d6QllyIiwic3ViIjoxLCJwcnYiOiJlZTVhYzY5NDI5YzU1NmQ3NWRiZTdmZjRlNThiOTdjZDRmNzE0MmViIn0.Ykb0nBteVz3KBVmfxAcPHtgA9JPyfD3CArwSL4P3onA
+````
+```
+    POST Request:
+    {
+    	"avatar" : image
+    }
+    
+    Response
+  {
+      "message": "Аватар успешно изменен!",
+      "success": true
+  }
+
+```

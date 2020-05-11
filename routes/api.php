@@ -27,6 +27,11 @@ Route::group(['middleware' => 'api'], function () {
             Route::post('/send/request', ['uses' => 'RequestController@sendRequest']);
             Route::post('/accept/request', ['uses' => 'RequestController@acceptRequest']);
 
+            Route::get('/profile', ['uses' => 'ProfileController@myProfile']);
+            Route::post('/profile/avatar', ['uses' => 'ProfileController@changeAvatar']);
+
+
+
 
 
 
