@@ -20,7 +20,8 @@ Route::group(['middleware' => 'api'], function () {
             Route::get('/user/categories', ['uses' => 'CategoryController@getUserCategories']);
             Route::post('/user/categories/add', ['uses' => 'CategoryController@chooseOrRemoveCategory']);
 
-            Route::get('/user/projects', ['uses' => 'ProjectController@getUserProjects']);
+            Route::get('/user/projects/creator', ['uses' => 'ProjectController@getCreatorProjects']);
+            Route::get('/user/projects/implementer', ['uses' => 'ProjectController@getImplementerProjects']);
             Route::post('/create/project', ['uses' => 'ProjectController@createProject']);
 
             Route::post('/send/request', ['uses' => 'RequestController@sendRequest']);

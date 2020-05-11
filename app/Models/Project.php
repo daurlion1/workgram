@@ -26,18 +26,24 @@ class Project extends Model
 
     ];
 
+    protected $hidden = [
+        'creator_id','implementer_id','category_id'
+    ];
+
+
     public function creator()
     {
         return $this->hasOne(User::class, 'id', 'creator_id');
     }
 
-//    public function implementer()
-//    {
-//        return $this->hasOne(User::class, 'id', 'implementer_id');
-//    }
+    public function implementer()
+    {
+        return $this->hasOne(User::class, 'id', 'implementer_id');
+    }
 
     public function category()
     {
         return $this->hasOne(Category::class, 'id', 'category_id');
     }
+
 }

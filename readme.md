@@ -225,9 +225,6 @@
             "data": [
                 {
                     "id": 1,
-                    "category_id": 1,
-                    "creator_id": 1,
-                    "implementer_id": 1,
                     "name": "test",
                     "description": "sadsadasdasdasdasdasd",
                     "price": 100,
@@ -237,13 +234,42 @@
                     "start": "2020-04-18 17:01:31",
                     "finish": "2020-06-18 17:01:45",
                     "created_at": null,
-                    "updated_at": "2020-04-30 11:58:00"
+                    "updated_at": "2020-04-30 11:58:00",
+                    "creator": {
+                        "id": 1,
+                        "firstname": "admin",
+                        "email": "admin@mail.ru",
+                        "email_verified_at": null,
+                        "created_at": "2020-04-18 13:44:37",
+                        "updated_at": "2020-05-11 04:21:12",
+                        "role_id": 1,
+                        "city_id": 1,
+                        "description": "",
+                        "nickname": "",
+                        "rating_score": 0,
+                        "image_path": "",
+                        "lastname": "",
+                        "platform": "IOS"
+                    },
+                    "implementer": {
+                        "id": 1,
+                        "firstname": "admin",
+                        "email": "admin@mail.ru",
+                        "email_verified_at": null,
+                        "created_at": "2020-04-18 13:44:37",
+                        "updated_at": "2020-05-11 04:21:12",
+                        "role_id": 1,
+                        "city_id": 1,
+                        "description": "",
+                        "nickname": "",
+                        "rating_score": 0,
+                        "image_path": "",
+                        "lastname": "",
+                        "platform": "IOS"
+                    }
                 },
                 {
                     "id": 2,
-                    "category_id": 1,
-                    "creator_id": 2,
-                    "implementer_id": null,
                     "name": "New_Project",
                     "description": "New description",
                     "price": 200,
@@ -253,13 +279,27 @@
                     "start": "2020-04-18 17:01:31",
                     "finish": "2020-04-20 17:01:31",
                     "created_at": "2020-04-30 07:18:00",
-                    "updated_at": "2020-04-30 07:18:00"
+                    "updated_at": "2020-04-30 07:18:00",
+                    "creator": {
+                        "id": 2,
+                        "firstname": "Dauren",
+                        "email": "daur-lion@mail.ru",
+                        "email_verified_at": null,
+                        "created_at": "2020-04-18 17:00:22",
+                        "updated_at": "2020-04-30 13:12:57",
+                        "role_id": 1,
+                        "city_id": 1,
+                        "description": "",
+                        "nickname": "",
+                        "rating_score": 0,
+                        "image_path": "",
+                        "lastname": "",
+                        "platform": null
+                    },
+                    "implementer": null
                 },
                 {
                     "id": 3,
-                    "category_id": 1,
-                    "creator_id": 1,
-                    "implementer_id": 2,
                     "name": "New_Project123123",
                     "description": "New description",
                     "price": 200,
@@ -269,13 +309,42 @@
                     "start": "2020-04-18 17:01:31",
                     "finish": "2020-04-20 17:01:31",
                     "created_at": "2020-04-30 12:01:05",
-                    "updated_at": "2020-04-30 12:17:17"
+                    "updated_at": "2020-04-30 12:17:17",
+                    "creator": {
+                        "id": 1,
+                        "firstname": "admin",
+                        "email": "admin@mail.ru",
+                        "email_verified_at": null,
+                        "created_at": "2020-04-18 13:44:37",
+                        "updated_at": "2020-05-11 04:21:12",
+                        "role_id": 1,
+                        "city_id": 1,
+                        "description": "",
+                        "nickname": "",
+                        "rating_score": 0,
+                        "image_path": "",
+                        "lastname": "",
+                        "platform": "IOS"
+                    },
+                    "implementer": {
+                        "id": 2,
+                        "firstname": "Dauren",
+                        "email": "daur-lion@mail.ru",
+                        "email_verified_at": null,
+                        "created_at": "2020-04-18 17:00:22",
+                        "updated_at": "2020-04-30 13:12:57",
+                        "role_id": 1,
+                        "city_id": 1,
+                        "description": "",
+                        "nickname": "",
+                        "rating_score": 0,
+                        "image_path": "",
+                        "lastname": "",
+                        "platform": null
+                    }
                 },
                 {
                     "id": 4,
-                    "category_id": 1,
-                    "creator_id": 2,
-                    "implementer_id": 1,
                     "name": "New_Project123123",
                     "description": "New description",
                     "price": 200,
@@ -285,7 +354,99 @@
                     "start": "2020-04-18 17:01:31",
                     "finish": "2020-04-20 17:01:31",
                     "created_at": "2020-04-30 13:13:17",
-                    "updated_at": "2020-04-30 13:17:26"
+                    "updated_at": "2020-04-30 13:17:26",
+                    "creator": {
+                        "id": 2,
+                        "firstname": "Dauren",
+                        "email": "daur-lion@mail.ru",
+                        "email_verified_at": null,
+                        "created_at": "2020-04-18 17:00:22",
+                        "updated_at": "2020-04-30 13:12:57",
+                        "role_id": 1,
+                        "city_id": 1,
+                        "description": "",
+                        "nickname": "",
+                        "rating_score": 0,
+                        "image_path": "",
+                        "lastname": "",
+                        "platform": null
+                    },
+                    "implementer": {
+                        "id": 1,
+                        "firstname": "admin",
+                        "email": "admin@mail.ru",
+                        "email_verified_at": null,
+                        "created_at": "2020-04-18 13:44:37",
+                        "updated_at": "2020-05-11 04:21:12",
+                        "role_id": 1,
+                        "city_id": 1,
+                        "description": "",
+                        "nickname": "",
+                        "rating_score": 0,
+                        "image_path": "",
+                        "lastname": "",
+                        "platform": "IOS"
+                    }
+                },
+                {
+                    "id": 5,
+                    "name": "New_Project123123",
+                    "description": "New description",
+                    "price": 2000,
+                    "latitude": "123123",
+                    "longitude": "123",
+                    "status": 0,
+                    "start": "2020-04-18 17:01:31",
+                    "finish": "2020-04-20 17:01:31",
+                    "created_at": "2020-05-01 07:19:22",
+                    "updated_at": "2020-05-01 07:19:22",
+                    "creator": {
+                        "id": 1,
+                        "firstname": "admin",
+                        "email": "admin@mail.ru",
+                        "email_verified_at": null,
+                        "created_at": "2020-04-18 13:44:37",
+                        "updated_at": "2020-05-11 04:21:12",
+                        "role_id": 1,
+                        "city_id": 1,
+                        "description": "",
+                        "nickname": "",
+                        "rating_score": 0,
+                        "image_path": "",
+                        "lastname": "",
+                        "platform": "IOS"
+                    },
+                    "implementer": null
+                },
+                {
+                    "id": 6,
+                    "name": "New_Project123123",
+                    "description": "New description",
+                    "price": 2000,
+                    "latitude": "123123",
+                    "longitude": "123",
+                    "status": 0,
+                    "start": "2020-04-18 17:01:31",
+                    "finish": "2020-04-20 17:01:31",
+                    "created_at": "2020-05-02 13:59:10",
+                    "updated_at": "2020-05-02 13:59:10",
+                    "creator": {
+                        "id": 2,
+                        "firstname": "Dauren",
+                        "email": "daur-lion@mail.ru",
+                        "email_verified_at": null,
+                        "created_at": "2020-04-18 17:00:22",
+                        "updated_at": "2020-04-30 13:12:57",
+                        "role_id": 1,
+                        "city_id": 1,
+                        "description": "",
+                        "nickname": "",
+                        "rating_score": 0,
+                        "image_path": "",
+                        "lastname": "",
+                        "platform": null
+                    },
+                    "implementer": null
                 }
             ],
             "first_page_url": "http://127.0.0.1:8000/api/projects?page=1",
@@ -296,15 +457,15 @@
             "path": "http://127.0.0.1:8000/api/projects",
             "per_page": 10,
             "prev_page_url": null,
-            "to": 4,
-            "total": 4
+            "to": 6,
+            "total": 6
         },
         "success": true
-    }    
+    }
 ```
 
-### Вывод всех маоих проектов  по  роли (создатель или исполнитель)
-#### URL: http://127.0.0.1:8000/api/user/projects?type=creator
+### Вывод всех маоих проектов  по  роли (создатель)
+#### URL: http://127.0.0.1:8000/api/user/projects/creator
 ````
     Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuc2VuZC5tZVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1Nzk2MjcxNjYsImV4cCI6MTU3OTYzMDc2NiwibmJmIjoxNTc5NjI3MTY2LCJqdGkiOiJPeUg5T3hZcVY2d0d6QllyIiwic3ViIjoxLCJwcnYiOiJlZTVhYzY5NDI5YzU1NmQ3NWRiZTdmZjRlNThiOTdjZDRmNzE0MmViIn0.Ykb0nBteVz3KBVmfxAcPHtgA9JPyfD3CArwSL4P3onA
 ````
@@ -318,56 +479,341 @@
         
     Response:
     
-    {
-        "$projects": {
-            "current_page": 1,
-            "data": [
-                {
+{
+    "$projects": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 1,
+                "name": "test",
+                "description": "sadsadasdasdasdasdasd",
+                "price": 100,
+                "latitude": "123",
+                "longitude": "213",
+                "status": 2,
+                "start": "2020-04-18 17:01:31",
+                "finish": "2020-06-18 17:01:45",
+                "created_at": null,
+                "updated_at": "2020-04-30 11:58:00",
+                "creator": {
                     "id": 1,
-                    "category_id": 1,
-                    "creator_id": 1,
-                    "implementer_id": 1,
-                    "name": "test",
-                    "description": "sadsadasdasdasdasdasd",
-                    "price": 100,
-                    "latitude": "123",
-                    "longitude": "213",
-                    "status": 2,
-                    "start": "2020-04-18 17:01:31",
-                    "finish": "2020-06-18 17:01:45",
-                    "created_at": null,
-                    "updated_at": "2020-04-30 11:58:00"
+                    "firstname": "admin",
+                    "email": "admin@mail.ru",
+                    "email_verified_at": null,
+                    "created_at": "2020-04-18 13:44:37",
+                    "updated_at": "2020-05-11 04:21:12",
+                    "role_id": 1,
+                    "city_id": 1,
+                    "description": "",
+                    "nickname": "",
+                    "rating_score": 0,
+                    "image_path": "",
+                    "lastname": "",
+                    "platform": "IOS"
                 },
-                {
-                    "id": 4,
-                    "category_id": 1,
-                    "creator_id": 2,
-                    "implementer_id": 1,
-                    "name": "New_Project123123",
-                    "description": "New description",
-                    "price": 200,
-                    "latitude": "123123",
-                    "longitude": "123",
-                    "status": 0,
-                    "start": "2020-04-18 17:01:31",
-                    "finish": "2020-04-20 17:01:31",
-                    "created_at": "2020-04-30 13:13:17",
-                    "updated_at": "2020-04-30 13:17:26"
+                "implementer": {
+                    "id": 1,
+                    "firstname": "admin",
+                    "email": "admin@mail.ru",
+                    "email_verified_at": null,
+                    "created_at": "2020-04-18 13:44:37",
+                    "updated_at": "2020-05-11 04:21:12",
+                    "role_id": 1,
+                    "city_id": 1,
+                    "description": "",
+                    "nickname": "",
+                    "rating_score": 0,
+                    "image_path": "",
+                    "lastname": "",
+                    "platform": "IOS"
+                },
+                "category": {
+                    "id": 1,
+                    "name": "Management",
+                    "created_at": "2020-04-18 13:45:38",
+                    "updated_at": "2020-04-18 13:45:38",
+                    "deleted_at": null
                 }
-            ],
-            "first_page_url": "http://127.0.0.1:8000/api/user/projects?page=1",
-            "from": 1,
-            "last_page": 1,
-            "last_page_url": "http://127.0.0.1:8000/api/user/projects?page=1",
-            "next_page_url": null,
-            "path": "http://127.0.0.1:8000/api/user/projects",
-            "per_page": 10,
-            "prev_page_url": null,
-            "to": 2,
-            "total": 2
-        },
-        "success": true
-    }
+            },
+            {
+                "id": 3,
+                "name": "New_Project123123",
+                "description": "New description",
+                "price": 200,
+                "latitude": "123123",
+                "longitude": "123",
+                "status": 0,
+                "start": "2020-04-18 17:01:31",
+                "finish": "2020-04-20 17:01:31",
+                "created_at": "2020-04-30 12:01:05",
+                "updated_at": "2020-04-30 12:17:17",
+                "creator": {
+                    "id": 1,
+                    "firstname": "admin",
+                    "email": "admin@mail.ru",
+                    "email_verified_at": null,
+                    "created_at": "2020-04-18 13:44:37",
+                    "updated_at": "2020-05-11 04:21:12",
+                    "role_id": 1,
+                    "city_id": 1,
+                    "description": "",
+                    "nickname": "",
+                    "rating_score": 0,
+                    "image_path": "",
+                    "lastname": "",
+                    "platform": "IOS"
+                },
+                "implementer": {
+                    "id": 2,
+                    "firstname": "Dauren",
+                    "email": "daur-lion@mail.ru",
+                    "email_verified_at": null,
+                    "created_at": "2020-04-18 17:00:22",
+                    "updated_at": "2020-04-30 13:12:57",
+                    "role_id": 1,
+                    "city_id": 1,
+                    "description": "",
+                    "nickname": "",
+                    "rating_score": 0,
+                    "image_path": "",
+                    "lastname": "",
+                    "platform": null
+                },
+                "category": {
+                    "id": 1,
+                    "name": "Management",
+                    "created_at": "2020-04-18 13:45:38",
+                    "updated_at": "2020-04-18 13:45:38",
+                    "deleted_at": null
+                }
+            },
+            {
+                "id": 5,
+                "name": "New_Project123123",
+                "description": "New description",
+                "price": 2000,
+                "latitude": "123123",
+                "longitude": "123",
+                "status": 0,
+                "start": "2020-04-18 17:01:31",
+                "finish": "2020-04-20 17:01:31",
+                "created_at": "2020-05-01 07:19:22",
+                "updated_at": "2020-05-01 07:19:22",
+                "creator": {
+                    "id": 1,
+                    "firstname": "admin",
+                    "email": "admin@mail.ru",
+                    "email_verified_at": null,
+                    "created_at": "2020-04-18 13:44:37",
+                    "updated_at": "2020-05-11 04:21:12",
+                    "role_id": 1,
+                    "city_id": 1,
+                    "description": "",
+                    "nickname": "",
+                    "rating_score": 0,
+                    "image_path": "",
+                    "lastname": "",
+                    "platform": "IOS"
+                },
+                "implementer": null,
+                "category": {
+                    "id": 1,
+                    "name": "Management",
+                    "created_at": "2020-04-18 13:45:38",
+                    "updated_at": "2020-04-18 13:45:38",
+                    "deleted_at": null
+                }
+            }
+        ],
+        "first_page_url": "http://127.0.0.1:8000/api/user/projects/creator?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http://127.0.0.1:8000/api/user/projects/creator?page=1",
+        "next_page_url": null,
+        "path": "http://127.0.0.1:8000/api/user/projects/creator",
+        "per_page": 10,
+        "prev_page_url": null,
+        "to": 3,
+        "total": 3
+    },
+    "success": true
+}
+```
+
+### Вывод всех маоих проектов  по  роли (исполнитель)
+#### URL: http://127.0.0.1:8000/api/user/projects/implementer
+````
+    Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuc2VuZC5tZVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1Nzk2MjcxNjYsImV4cCI6MTU3OTYzMDc2NiwibmJmIjoxNTc5NjI3MTY2LCJqdGkiOiJPeUg5T3hZcVY2d0d6QllyIiwic3ViIjoxLCJwcnYiOiJlZTVhYzY5NDI5YzU1NmQ3NWRiZTdmZjRlNThiOTdjZDRmNzE0MmViIn0.Ykb0nBteVz3KBVmfxAcPHtgA9JPyfD3CArwSL4P3onA
+````
+```
+    GET Request:
+    Query Parameter
+        ?page=0 // от 0 до ~
+        ?size=10 // по дефолту можно не передавать, количество выводимых элементов
+        ?type = creator || implementer // стринг
+        
+        
+    Response:
+    
+{
+    "$projects": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 1,
+                "name": "test",
+                "description": "sadsadasdasdasdasdasd",
+                "price": 100,
+                "latitude": "123",
+                "longitude": "213",
+                "status": 2,
+                "start": "2020-04-18 17:01:31",
+                "finish": "2020-06-18 17:01:45",
+                "created_at": null,
+                "updated_at": "2020-04-30 11:58:00",
+                "creator": {
+                    "id": 1,
+                    "firstname": "admin",
+                    "email": "admin@mail.ru",
+                    "email_verified_at": null,
+                    "created_at": "2020-04-18 13:44:37",
+                    "updated_at": "2020-05-11 04:21:12",
+                    "role_id": 1,
+                    "city_id": 1,
+                    "description": "",
+                    "nickname": "",
+                    "rating_score": 0,
+                    "image_path": "",
+                    "lastname": "",
+                    "platform": "IOS"
+                },
+                "implementer": {
+                    "id": 1,
+                    "firstname": "admin",
+                    "email": "admin@mail.ru",
+                    "email_verified_at": null,
+                    "created_at": "2020-04-18 13:44:37",
+                    "updated_at": "2020-05-11 04:21:12",
+                    "role_id": 1,
+                    "city_id": 1,
+                    "description": "",
+                    "nickname": "",
+                    "rating_score": 0,
+                    "image_path": "",
+                    "lastname": "",
+                    "platform": "IOS"
+                },
+                "category": {
+                    "id": 1,
+                    "name": "Management",
+                    "created_at": "2020-04-18 13:45:38",
+                    "updated_at": "2020-04-18 13:45:38",
+                    "deleted_at": null
+                }
+            },
+            {
+                "id": 3,
+                "name": "New_Project123123",
+                "description": "New description",
+                "price": 200,
+                "latitude": "123123",
+                "longitude": "123",
+                "status": 0,
+                "start": "2020-04-18 17:01:31",
+                "finish": "2020-04-20 17:01:31",
+                "created_at": "2020-04-30 12:01:05",
+                "updated_at": "2020-04-30 12:17:17",
+                "creator": {
+                    "id": 1,
+                    "firstname": "admin",
+                    "email": "admin@mail.ru",
+                    "email_verified_at": null,
+                    "created_at": "2020-04-18 13:44:37",
+                    "updated_at": "2020-05-11 04:21:12",
+                    "role_id": 1,
+                    "city_id": 1,
+                    "description": "",
+                    "nickname": "",
+                    "rating_score": 0,
+                    "image_path": "",
+                    "lastname": "",
+                    "platform": "IOS"
+                },
+                "implementer": {
+                    "id": 2,
+                    "firstname": "Dauren",
+                    "email": "daur-lion@mail.ru",
+                    "email_verified_at": null,
+                    "created_at": "2020-04-18 17:00:22",
+                    "updated_at": "2020-04-30 13:12:57",
+                    "role_id": 1,
+                    "city_id": 1,
+                    "description": "",
+                    "nickname": "",
+                    "rating_score": 0,
+                    "image_path": "",
+                    "lastname": "",
+                    "platform": null
+                },
+                "category": {
+                    "id": 1,
+                    "name": "Management",
+                    "created_at": "2020-04-18 13:45:38",
+                    "updated_at": "2020-04-18 13:45:38",
+                    "deleted_at": null
+                }
+            },
+            {
+                "id": 5,
+                "name": "New_Project123123",
+                "description": "New description",
+                "price": 2000,
+                "latitude": "123123",
+                "longitude": "123",
+                "status": 0,
+                "start": "2020-04-18 17:01:31",
+                "finish": "2020-04-20 17:01:31",
+                "created_at": "2020-05-01 07:19:22",
+                "updated_at": "2020-05-01 07:19:22",
+                "creator": {
+                    "id": 1,
+                    "firstname": "admin",
+                    "email": "admin@mail.ru",
+                    "email_verified_at": null,
+                    "created_at": "2020-04-18 13:44:37",
+                    "updated_at": "2020-05-11 04:21:12",
+                    "role_id": 1,
+                    "city_id": 1,
+                    "description": "",
+                    "nickname": "",
+                    "rating_score": 0,
+                    "image_path": "",
+                    "lastname": "",
+                    "platform": "IOS"
+                },
+                "implementer": null,
+                "category": {
+                    "id": 1,
+                    "name": "Management",
+                    "created_at": "2020-04-18 13:45:38",
+                    "updated_at": "2020-04-18 13:45:38",
+                    "deleted_at": null
+                }
+            }
+        ],
+        "first_page_url": "http://127.0.0.1:8000/api/user/projects/creator?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http://127.0.0.1:8000/api/user/projects/creator?page=1",
+        "next_page_url": null,
+        "path": "http://127.0.0.1:8000/api/user/projects/creator",
+        "per_page": 10,
+        "prev_page_url": null,
+        "to": 3,
+        "total": 3
+    },
+    "success": true
+}
 ```
 ### Создание проекта
 #### URL: http://127.0.0.1:8000/api/create/project
