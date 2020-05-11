@@ -8,10 +8,10 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Exceptions\ApiServiceException;
 use App\Http\Controllers\ApiBaseController;
 use App\Http\Errors\ErrorCode;
-use App\Http\Requests\Api\Auth\AuthorizedResetPasswordApiRequest;
-use App\Http\Requests\Api\Auth\CheckLoginExistenceApiRequest;
+
 use App\Http\Requests\API\Auth\LoginApiRequest;
 use App\Http\Requests\API\Auth\RegisterApiRequest;
+
 use App\Http\Requests\Api\Auth\SetDeviceTokenApiRequest;
 use App\Http\Utils\ApiUtil;
 use App\Models\City;
@@ -21,7 +21,7 @@ use App\Utils\StaticConstants;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Tymon\JWTAuth\JWTAuth;
+use JWTAuth;
 
 
 
@@ -68,8 +68,8 @@ class AuthController extends ApiBaseController
         }
         $mobileUser = (object)array();
         $mobileUser->token = $user->current_token;
-        $mobileUser->name = $user->name;
-        $mobileUser->surname = $user->surname;
+        $mobileUser->name = $user->firstname;
+        $mobileUser->surname = $user->lastname;
         $mobileUser->nickname = $user->nickname;
         $mobileUser->avatar = $user->image_path;
 
@@ -170,7 +170,6 @@ class AuthController extends ApiBaseController
 //    {
 //        return $this->successResponse(['is_exists' => $this->authService->checkLoginExistence($request)]);
 //    }
-
     public function setDeviceToken($user, $deviceToken, $platform)
 
     {

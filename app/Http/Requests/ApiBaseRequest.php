@@ -34,11 +34,11 @@ abstract class ApiBaseRequest extends FormRequest implements WithUser
         return $this->injectedRules();
     }
 
-//    protected function failedValidation(Validator $validator)
-//    {
-//        throw new ApiServiceException(400, false, [
-//            'errorCode' => ErrorCode::INVALID_FIELD,
-//            'errors' => $validator->errors()
-//        ]);
-//    }
+    protected function failedValidation(Validator $validator)
+    {
+        throw new ApiServiceException(400, false, [
+            'errorCode' => ErrorCode::INVALID_FIELD,
+            'errors' => $validator->errors()
+        ]);
+    }
 }
