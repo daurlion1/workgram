@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\UserCategory;
 use Illuminate\Http\Request;
 use Auth;
+use phpDocumentor\Reflection\Types\Array_;
+
 class CategoryController extends ApiBaseController
 {
     public function getCategories(Request $request) {
@@ -18,9 +20,28 @@ class CategoryController extends ApiBaseController
     public function getUserCategories(Request $request) {
         $perPage = $request->size ? $request->size : 10;
         $user = Auth::user();
-        $user_categories_ids = UserCategory::where('user_id', $user->id)->get('category_id');
-        $user_categories = Category::whereIn('id',$user_categories_ids)->paginate($perPage);
-        return $this->successResponse(['user_categories' => $user_categories] );
+        $user_categories_ids = array();
+        $user_categories = UserCategory::where('user_id', $user->id)->get();
+
+        foreach ($user_categories as $user_category){
+            array_push($user_categories_ids, $user_category->category_id);
+
+        }
+
+        $categories = Category::paginate($perPage);
+
+        foreach ($categories as $category){
+
+                if ( in_array($category->id,$user_categories_ids) ){
+                    $category->have = true;
+                }
+                else{
+                    $category->have = false;
+                }
+
+
+        }
+        return $this->successResponse(['user_categories' => $categories] );
     }
     public function chooseOrRemoveCategory(Request $request)
     {

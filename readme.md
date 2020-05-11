@@ -161,31 +161,56 @@
 
     RESPONSE
     
-    {
-        "user_categories": {
-            "current_page": 1,
-            "data": [
-                {
-                    "id": 1,
-                    "name": "Management",
-                    "created_at": "2020-04-18 13:45:38",
-                    "updated_at": "2020-04-18 13:45:38",
-                    "deleted_at": null
-                }
-            ],
-            "first_page_url": "http://127.0.0.1:8000/api/user/categories?page=1",
-            "from": 1,
-            "last_page": 1,
-            "last_page_url": "http://127.0.0.1:8000/api/user/categories?page=1",
-            "next_page_url": null,
-            "path": "http://127.0.0.1:8000/api/user/categories",
-            "per_page": 10,
-            "prev_page_url": null,
-            "to": 1,
-            "total": 1
-        },
-        "success": true
-    }
+   {
+       "user_categories": {
+           "current_page": 1,
+           "data": [
+               {
+                   "id": 1,
+                   "name": "Management",
+                   "created_at": "2020-04-18 13:45:38",
+                   "updated_at": "2020-04-18 13:45:38",
+                   "deleted_at": null,
+                   "have": true
+               },
+               {
+                   "id": 2,
+                   "name": "asd",
+                   "created_at": null,
+                   "updated_at": null,
+                   "deleted_at": null,
+                   "have": false
+               },
+               {
+                   "id": 3,
+                   "name": "TestCategory1",
+                   "created_at": null,
+                   "updated_at": null,
+                   "deleted_at": null,
+                   "have": false
+               },
+               {
+                   "id": 4,
+                   "name": "TestCategory2",
+                   "created_at": null,
+                   "updated_at": null,
+                   "deleted_at": null,
+                   "have": false
+               }
+           ],
+           "first_page_url": "http://127.0.0.1:8000/api/user/categories?page=1",
+           "from": 1,
+           "last_page": 1,
+           "last_page_url": "http://127.0.0.1:8000/api/user/categories?page=1",
+           "next_page_url": null,
+           "path": "http://127.0.0.1:8000/api/user/categories",
+           "per_page": 10,
+           "prev_page_url": null,
+           "to": 4,
+           "total": 4
+       },
+       "success": true
+   }
 ```
 ### Добавление изменение моих категорий 
 #### URL: http://127.0.0.1:8000/api/user/categories/add
