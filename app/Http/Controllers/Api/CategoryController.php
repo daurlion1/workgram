@@ -41,7 +41,7 @@ class CategoryController extends ApiBaseController
 
 
         }
-        return $this->successResponse(['user_categories' => $categories] );
+        return $this->successResponse(['categories' => $categories] );
     }
     public function chooseOrRemoveCategory(Request $request)
     {
