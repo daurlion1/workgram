@@ -68,8 +68,8 @@ class AuthController extends ApiBaseController
         }
         $mobileUser = (object)array();
         $mobileUser->token = $user->current_token;
-        $mobileUser->name = $user->firstname;
-        $mobileUser->surname = $user->lastname;
+        $mobileUser->name = $user->first_name;
+        $mobileUser->surname = $user->last_name;
         $mobileUser->nickname = $user->nickname;
         $mobileUser->avatar = $user->image_path;
 
@@ -118,8 +118,8 @@ class AuthController extends ApiBaseController
         $user->password = bcrypt($request->password);
         $user->remember_token = '';
         $user->role_id = Role::USER_ID;
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->current_token = '';
         $user->nickname = $request->nickname;
         $user->image_path = StaticConstants::DEFAULT_AVATAR;
