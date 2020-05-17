@@ -33,7 +33,7 @@ class ProjectController extends ApiBaseController
         $perPage = $request->size ? $request->size : 10;
         $projects = Project::where('creator_id',$user->id)->with('creator','implementer','category')->paginate($perPage);
 
-        return $this->successResponse(['$projects' => $projects]);
+        return $this->successResponse(['projects' => $projects]);
     }
 
     public function getImplementerProjects(Request $request)
