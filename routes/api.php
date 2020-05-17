@@ -12,14 +12,16 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::group(['namespace' => 'Api'], function () {
 
-        Route::get('/categories', ['uses' => 'CategoryController@getCategories']);
-        Route::get('/projects', ['uses' => 'ProjectController@getProjectsByCategory']);
-        Route::get('/users/by/category/{category_id}', ['uses' => 'UserController@getUsersByCategory'])->where('id', '[0-9]+');
+
+
 
         Route::group(['middleware' => 'auth:api'], function () {
             Route::get('/user/categories', ['uses' => 'CategoryController@getUserCategories']);
             Route::post('/user/categories/add', ['uses' => 'CategoryController@chooseOrRemoveCategory']);
+            Route::get('/categories', ['uses' => 'CategoryController@getCategories']);
 
+
+            Route::get('/projects', ['uses' => 'ProjectController@getProjectsByCategory']);
             Route::get('/user/projects/creator', ['uses' => 'ProjectController@getCreatorProjects']);
             Route::get('/user/projects/implementer', ['uses' => 'ProjectController@getImplementerProjects']);
             Route::post('/create/project', ['uses' => 'ProjectController@createProject']);
@@ -32,6 +34,8 @@ Route::group(['middleware' => 'api'], function () {
 
 
             Route::get('/chats', ['uses' => 'ChatController@getAllChats']);
+
+            Route::get('/users/by/category/{category_id}', ['uses' => 'UserController@getUsersByCategory'])->where('id', '[0-9]+');
 
 
 
