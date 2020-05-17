@@ -18,11 +18,11 @@ class ProjectController extends ApiBaseController
         $user = Auth::user();
         $perPage = $request->size ? $request->size : 10;
         if ($request->has('category_id')){
-            $projects = Project::where('category_id',$request->category_id)->with('creator','implementer')->paginate($perPage);
+            $projects = Project::where('category_id',$request->category_id)->with('creator','implementer','category')->paginate($perPage);
 
         }
         else{
-            $projects = Project::with('creator','implementer')->paginate($perPage);
+            $projects = Project::with('creator','implementer','category')->paginate($perPage);
         }
         return $this->successResponse(['projects' => $projects]);
     }
