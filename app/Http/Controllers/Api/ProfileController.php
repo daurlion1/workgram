@@ -18,8 +18,8 @@ class ProfileController extends ApiBaseController
         $profile = (object)array();
         $profile->id = $user->id;
         $profile->avatar = $user->image_path;
-        $profile->name = $user->firstname ? $user->firstname : '';
-        $profile->surname = $user->lastname ? $user->lastname : '';
+        $profile->name = $user->first_name ? $user->first_name : '';
+        $profile->surname = $user->last_name ? $user->last_name : '';
         $profile->created = $user->created_at;
         $profile->rating_score = $user->rating_score;
         $profile->city = $user->city ? $user->city->name : 'Алматы';

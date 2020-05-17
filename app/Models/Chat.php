@@ -17,7 +17,7 @@ class Chat extends Model
         return $this->hasOne(User::class, 'id', 'creator_id');
     }
 
-    public function implementor()
+    public function implementer()
     {
         return $this->hasOne(User::class, 'id', 'implementer_id');
     }

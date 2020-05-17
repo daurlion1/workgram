@@ -31,6 +31,9 @@ Route::group(['middleware' => 'api'], function () {
             Route::post('/profile/avatar', ['uses' => 'ProfileController@changeAvatar']);
 
 
+            Route::get('/chats', ['uses' => 'ChatController@getAllChats']);
+
+
 
 
 

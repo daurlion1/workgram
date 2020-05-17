@@ -17,7 +17,7 @@ class ProjectController extends ApiBaseController
     {
         $perPage = $request->size ? $request->size : 10;
         $projects = Project::where('category_id',$request->category_id)->with('creator','implementer')->paginate($perPage);
-        return $this->successResponse(['$projects' => $projects]);
+        return $this->successResponse(['projects' => $projects]);
     }
 
     public function getCreatorProjects(Request $request)
@@ -34,7 +34,7 @@ class ProjectController extends ApiBaseController
         $user = Auth::user();
         $perPage = $request->size ? $request->size : 10;
         $projects = Project::where('implementer_id',$user->id)->with('creator','implementer','category')->paginate($perPage);
-        return $this->successResponse(['$projects' => $projects]);
+        return $this->successResponse(['projects' => $projects]);
     }
 
     public function createProject(Request $request)
