@@ -12,6 +12,7 @@ class RegisterApiRequest extends ApiBaseRequest
             return [
                 'email' => ['email', 'string', 'unique:users', 'required'],
                 'password' => ['string', 'min:3'],
+                'phone' => ['string', 'unique:users', 'required'],
 //                'nickname' => ['string'],
 //                'firstname'=> ['string'],
 //                'lastname' =>['string'],

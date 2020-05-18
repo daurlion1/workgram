@@ -130,6 +130,7 @@ class AuthController extends ApiBaseController
         $user->rating_score = 0;
 
         $user->email = $request->email;
+        $user->phone = $request->phone;
             //VerifyEmail
 
         $user->save();

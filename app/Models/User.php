@@ -27,6 +27,7 @@ class User extends Authenticatable implements JWTSubject
         'device_token',
         'description',
         'nickname',
+        'phone',
         'image_path',
         "platform",
         "rating_score"
