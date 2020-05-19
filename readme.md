@@ -994,3 +994,70 @@
   }
 
 ```
+
+### Изменить Профайл
+#### URL: http://127.0.0.1:8000/api/profile/update
+````
+    Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuc2VuZC5tZVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1Nzk2MjcxNjYsImV4cCI6MTU3OTYzMDc2NiwibmJmIjoxNTc5NjI3MTY2LCJqdGkiOiJPeUg5T3hZcVY2d0d6QllyIiwic3ViIjoxLCJwcnYiOiJlZTVhYzY5NDI5YzU1NmQ3NWRiZTdmZjRlNThiOTdjZDRmNzE0MmViIn0.Ykb0nBteVz3KBVmfxAcPHtgA9JPyfD3CArwSL4P3onA
+````
+```
+    POST Request:
+    {
+            	"name" : "Admin" string,
+            	"surname" : "Admin string " ,
+            	"nickname" : "adminsky" string,
+            	"city_id" : 2 ,
+            	"description": "asdasdasdqweq123"
+            }
+    
+    Response
+  {
+      "message": "Профиль успешно изменен!",
+      "success": true
+  }
+
+```
+
+### Получение списка городов
+#### URL: http://127.0.0.1:8000/api/cities
+```
+    GET Request
+        
+    Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuc2VuZC5tZVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1Nzk2MjcxNjYsImV4cCI6MTU3OTYzMDc2NiwibmJmIjoxNTc5NjI3MTY2LCJqdGkiOiJPeUg5T3hZcVY2d0d6QllyIiwic3ViIjoxLCJwcnYiOiJlZTVhYzY5NDI5YzU1NmQ3NWRiZTdmZjRlNThiOTdjZDRmNzE0MmViIn0.Ykb0nBteVz3KBVmfxAcPHtgA9JPyfD3CArwSL4P3onA
+
+
+    RESPONSE
+    {
+        "cities": [
+            {
+                "id": 1,
+                "name": "Almaty"
+            },
+            {
+                "id": 2,
+                "name": "Кокшетау"
+            }
+        ],
+        "success": true
+    }
+```
+
+### Оценить проект
+#### URL: http://127.0.0.1:8000/api/evaluate/project
+````
+    Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuc2VuZC5tZVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1Nzk2MjcxNjYsImV4cCI6MTU3OTYzMDc2NiwibmJmIjoxNTc5NjI3MTY2LCJqdGkiOiJPeUg5T3hZcVY2d0d6QllyIiwic3ViIjoxLCJwcnYiOiJlZTVhYzY5NDI5YzU1NmQ3NWRiZTdmZjRlNThiOTdjZDRmNzE0MmViIn0.Ykb0nBteVz3KBVmfxAcPHtgA9JPyfD3CArwSL4P3onA
+````
+```
+    POST Request:
+    {
+    	"project_id":3 numeric,
+    	"score":4 numeric
+    }
+    
+    Response
+  {
+      "message": "Проект оценен успешно",
+      "success": true
+  }
+
+```

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\ApiBaseController;
+use App\Http\Requests\API\Auth\ProfileRequest;
+use App\Models\City;
 use App\Models\User;
 use App\Utils\StaticConstants;
 use Illuminate\Http\Request;
@@ -27,6 +29,32 @@ class ProfileController extends ApiBaseController
         $profile->description = $user->description;
 
         return $this->successResponse(['profile' => $profile]);
+    }
+
+
+    public function updateProfile(ProfileRequest $profile)
+    {
+        $user = Auth::user();
+
+        $city = City::find($profile->city_id);
+        if ($city) {
+            $user->city_id = $profile->city_id;
+        }
+        if ($profile->nickname) {
+            $user->nickname = $profile->nickname;
+        }
+        if ($profile->name) {
+            $user->first_name = $profile->name;
+        }
+        if ($profile->surname) {
+            $user->last_name = $profile->surname;
+        }
+        if ($profile->description) {
+            $user->description = $profile->description;
+        }
+
+        $user->save();
+        return $this->successResponse(['message' => "Профиль успешно изменен!"]);
     }
 
     public function changeAvatar(Request $request)

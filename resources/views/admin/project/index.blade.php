@@ -32,11 +32,11 @@
                                         <td>{{$project->name}}</td>
                                         <td>{{$project->category->name}}</td>
                                         <td>{{$project->price}}</td>
-                                        <td>@if($project->status == 1)
+                                        <td>@if($project->status == 2)
                                                 <span class="text-success">
                                             Завершен
                                         </span>
-                                            @elseif($project->status == 0)
+                                            @elseif($project->status == 1)
                                                 <span class="text-info">
                                             В разработке
                                         </span>

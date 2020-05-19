@@ -7,6 +7,7 @@ use App\Http\Controllers\ApiBaseController;
 use App\Http\Errors\ErrorCode;
 use App\Models\Category;
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\DB;
@@ -42,6 +43,43 @@ class ProjectController extends ApiBaseController
         $perPage = $request->size ? $request->size : 10;
         $projects = Project::where('implementer_id',$user->id)->with('creator','implementer','category')->paginate($perPage);
         return $this->successResponse(['projects' => $projects]);
+    }
+
+    public function evaluateProject(Request $request){
+        $user = Auth::user();
+
+        $project_id = $request->project_id;
+        $score = $request->score;
+
+        $project = Project::find($project_id);
+        if (!$project) throw new ApiServiceException(404, false, [
+            'errors' => [
+                'Проект не найден!'
+            ],
+            'errorCode' => ErrorCode::RESOURCE_NOT_FOUND
+        ]);
+
+        if($project->creator_id == $user->id){
+
+            $project->score = $score;
+            $project->save();
+
+            $implementorProjects = Project::where('implementer_id',$project->implementer_id);
+            $implementorScore = $implementorProjects->get()->sum('score') / $implementorProjects->count();
+            $implementor = User::find($project->implementer_id);
+            $implementor->rating_score = $implementorScore;
+            $implementor->save();
+        }
+        else{
+            throw new ApiServiceException(403, false, [
+                'errors' => [
+                    'Проект вам не принаджедит!'
+                ],
+                'errorCode' => ErrorCode::RESOURCE_NOT_FOUND
+            ]);
+        }
+
+        return $this->successResponse(['message' => "Проект оценен успешно"]);
     }
 
     public function createProject(Request $request)

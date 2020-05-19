@@ -25,12 +25,14 @@ Route::group(['middleware' => 'api'], function () {
             Route::get('/user/projects/creator', ['uses' => 'ProjectController@getCreatorProjects']);
             Route::get('/user/projects/implementer', ['uses' => 'ProjectController@getImplementerProjects']);
             Route::post('/create/project', ['uses' => 'ProjectController@createProject']);
+            Route::post('/evaluate/project', ['uses' => 'ProjectController@evaluateProject']);
 
             Route::post('/send/request', ['uses' => 'RequestController@sendRequest']);
             Route::post('/accept/request', ['uses' => 'RequestController@acceptRequest']);
 
             Route::get('/profile', ['uses' => 'ProfileController@myProfile']);
             Route::post('/profile/avatar', ['uses' => 'ProfileController@changeAvatar']);
+            Route::post('/profile/update', ['uses' => 'ProfileController@updateProfile']);
 
 
             Route::get('/chats', ['uses' => 'ChatController@getAllChats']);
@@ -38,11 +40,7 @@ Route::group(['middleware' => 'api'], function () {
             Route::get('/users/by/category/{category_id}', ['uses' => 'UserController@getUsersByCategory'])->where('id', '[0-9]+');
 
 
-
-
-
-
-
+            Route::get('/cities', ['uses' => 'StaticController@getAllCities']);
         });
 
     });
