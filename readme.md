@@ -1061,3 +1061,65 @@
   }
 
 ```
+
+### Получение списка запросов
+#### URL: http://127.0.0.1:8000/api/request/by/project/3
+```
+    GET Request
+        
+    Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuc2VuZC5tZVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1Nzk2MjcxNjYsImV4cCI6MTU3OTYzMDc2NiwibmJmIjoxNTc5NjI3MTY2LCJqdGkiOiJPeUg5T3hZcVY2d0d6QllyIiwic3ViIjoxLCJwcnYiOiJlZTVhYzY5NDI5YzU1NmQ3NWRiZTdmZjRlNThiOTdjZDRmNzE0MmViIn0.Ykb0nBteVz3KBVmfxAcPHtgA9JPyfD3CArwSL4P3onA
+
+
+    RESPONSE
+    {
+        "requests": [
+            {
+                "id": 3,
+                "user_id": 2,
+                "project_id": 3,
+                "is_accepted": null,
+                "is_to_specific_user": 0,
+                "deleted_at": null,
+                "created_at": "2020-04-30 12:04:13",
+                "updated_at": "2020-04-30 12:04:13",
+                "user": {
+                    "id": 2,
+                    "first_name": "Darek",
+                    "email": "daur-lion@mail.ru",
+                    "email_verified_at": null,
+                    "description": "Doctor",
+                    "nickname": "darek01",
+                    "rating_score": 5,
+                    "image_path": "",
+                    "last_name": "Smeet",
+                    "platform": null,
+                    "phone": "77777777"
+                }
+            },
+            {
+                "id": 4,
+                "user_id": 2,
+                "project_id": 3,
+                "is_accepted": 1,
+                "is_to_specific_user": 0,
+                "deleted_at": null,
+                "created_at": "2020-04-30 12:12:52",
+                "updated_at": "2020-04-30 12:17:17",
+                "user": {
+                    "id": 2,
+                    "first_name": "Darek",
+                    "email": "daur-lion@mail.ru",
+                    "email_verified_at": null,
+                    "description": "Doctor",
+                    "nickname": "darek01",
+                    "rating_score": 5,
+                    "image_path": "",
+                    "last_name": "Smeet",
+                    "platform": null,
+                    "phone": "77777777"
+                }
+            }
+        ],
+        "success": true
+    }
+```

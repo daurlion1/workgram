@@ -91,9 +91,50 @@ class RequestController extends ApiBaseController
                     'implementer_id' => $user->id,
                 ]);
             }
+            else{
+                throw new ApiServiceException(403, false, [
+                    'errors' => [
+                        'Проект вам не принаджедит!'
+                    ],
+                    'errorCode' => ErrorCode::RESOURCE_NOT_FOUND
+                ]);
+            }
 
         }
         return $this->successResponse(['message' => "Статус успешно изменен"]);
+
+
+    }
+
+    public function getRequestByProject($project_id){
+        $user = Auth::user();
+
+        $project = Project::find($project_id);
+        if (!$project) throw new ApiServiceException(404, false, [
+            'errors' => [
+                'Такого проекта не существует!'
+            ],
+            'errorCode' => ErrorCode::RESOURCE_NOT_FOUND
+        ]);
+
+        if($project->creator_id == $user->id){
+            $requests = ProjectRequest::where('project_id',$project_id)
+                ->where('is_to_specific_user',false)
+                ->with('user')
+                ->get();
+        }
+        else{
+            throw new ApiServiceException(403, false, [
+                'errors' => [
+                    'Проект вам не принаджедит!'
+                ],
+                'errorCode' => ErrorCode::RESOURCE_NOT_FOUND
+            ]);
+        }
+
+        return $this->successResponse(['requests' => $requests]);
+
+
 
 
     }

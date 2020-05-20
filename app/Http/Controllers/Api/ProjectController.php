@@ -62,6 +62,7 @@ class ProjectController extends ApiBaseController
         if($project->creator_id == $user->id){
 
             $project->score = $score;
+            $project->status = 2;
             $project->save();
 
             $implementorProjects = Project::where('implementer_id',$project->implementer_id);

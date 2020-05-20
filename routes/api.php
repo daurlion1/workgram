@@ -29,6 +29,8 @@ Route::group(['middleware' => 'api'], function () {
 
             Route::post('/send/request', ['uses' => 'RequestController@sendRequest']);
             Route::post('/accept/request', ['uses' => 'RequestController@acceptRequest']);
+            Route::get('/request/by/project/{project_id}', ['uses' => 'RequestController@getRequestByProject'])->where('id', '[0-9]+');
+
 
             Route::get('/profile', ['uses' => 'ProfileController@myProfile']);
             Route::post('/profile/avatar', ['uses' => 'ProfileController@changeAvatar']);
