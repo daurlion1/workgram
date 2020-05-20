@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exceptions\ApiServiceException;
 use App\Http\Controllers\ApiBaseController;
+use App\Http\Errors\ErrorCode;
 use App\Http\Requests\API\Auth\ProfileRequest;
 use App\Models\City;
 use App\Models\User;
@@ -27,6 +29,7 @@ class ProfileController extends ApiBaseController
         $profile->city = $user->city ? $user->city->name : 'Алматы';
         $profile->nickname = $user->nickname;
         $profile->description = $user->description;
+        $profile->phone = $user->phone;
 
         return $this->successResponse(['profile' => $profile]);
     }
@@ -43,6 +46,11 @@ class ProfileController extends ApiBaseController
         if ($profile->nickname) {
             $user->nickname = $profile->nickname;
         }
+        if ($profile->phone) {
+
+            $user->phone = $profile->phone;
+        }
+
         if ($profile->name) {
             $user->first_name = $profile->name;
         }

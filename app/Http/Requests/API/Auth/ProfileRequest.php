@@ -15,7 +15,8 @@ class ProfileRequest extends ApiBaseRequest
             'surname' => ['string'],
             'nickname' => ['string'],
             'city_id' => ['numeric'],
-            'description'=>['string']
+            'description'=>['string'],
+            'phone' => ['string', 'unique:users']
         ];
     }
 }
