@@ -27,13 +27,30 @@ class RequestController extends ApiBaseController
             'errorCode' => ErrorCode::RESOURCE_NOT_FOUND
         ]);
 
-        if($is_to_specific_user == false and $user->id != $project->creator_id) {
 
+
+        if($is_to_specific_user == false and $user->id != $project->creator_id) {
+            $project_request = ProjectRequest::where('user_id',$user->id)
+                                            ->where('project_id',$project->id)
+                                            ->first();
+
+            if(!$project_request){
                 ProjectRequest::create([
                     'user_id' => $user->id,
                     'is_to_specific_user' => $is_to_specific_user,
                     'project_id' => $project_id
                 ]);
+            }
+            else{
+                throw new ApiServiceException(403, false, [
+                    'errors' => [
+                        'Запрос уже существует!'
+                    ],
+                    'errorCode' => ErrorCode::RESOURCE_NOT_FOUND
+                ]);
+            }
+
+
             $message = "Упешно отправлен";
         }
         elseif($project->creator_id != $request->implementer_id){
