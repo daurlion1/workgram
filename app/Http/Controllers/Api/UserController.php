@@ -15,7 +15,7 @@ class UserController extends ApiBaseController
 
         $user_categories_ids = UserCategory::where('category_id',$category_id)->get('user_id');
 
-        $users = User::whereIn('id',$user_categories_ids)->with('city')->paginate($perPage,['first_name','last_name','description','rating_score','image_path','city_id']);
+        $users = User::whereIn('id',$user_categories_ids)->with('city')->paginate($perPage,['first_name','last_name','description','rating_score','image_path','city_id','email','phone']);
 
         return $this->successResponse(['users' => $users]);
     }

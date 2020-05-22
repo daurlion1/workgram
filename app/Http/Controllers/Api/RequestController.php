@@ -85,10 +85,33 @@ class RequestController extends ApiBaseController
             ],
             'errorCode' => ErrorCode::RESOURCE_NOT_FOUND
         ]);
+
+        if ($project_request->is_accepted != null) throw new ApiServiceException(403, false, [
+            'errors' => [
+                'Запрос уже обработан!'
+            ],
+            'errorCode' => ErrorCode::ALREADY_REQUESTED
+        ]);
+
         $is_accepted = $request->is_accepted;
         $project = Project::find($project_request->project_id);
 
+        if ($project->status == Project::IN_PROCESS or $project->status ==Project::COMPLETED) throw new ApiServiceException(403, false, [
+            'errors' => [
+                'Запрос уже обработан!'
+            ],
+            'errorCode' => ErrorCode::ALREADY_REQUESTED
+        ]);
+
         if($project_request->is_to_specific_user == false and $user->id == $project->creator_id) {
+
+            $another_requests = ProjectRequest::where('project_id',$project->id)->where('id', '!=',$project_request_id)->get();
+
+            foreach($another_requests as $another_request){
+                $another_request->update([
+                    'is_accepted'=> false
+                ]);
+            }
 
             $project_request->update([
                 'is_accepted' => $is_accepted,
@@ -99,7 +122,9 @@ class RequestController extends ApiBaseController
                 $project = Project::find($project_request->project_id);
                 $project->update([
                     'implementer_id' => $project_request->user_id,
+                    'status' => 1
                 ]);
+
             }
 
         }
