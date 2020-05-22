@@ -72,11 +72,14 @@ class AuthController extends ApiBaseController
         $mobileUser->surname = $user->last_name;
         $mobileUser->nickname = $user->nickname;
         $mobileUser->avatar = $user->image_path;
+        $mobileUser->id = $user->id;
+
+
 
 
 
         return $this->successResponse(['token' => $mobileUser->token, 'name' => $mobileUser->name, 'surname' => $mobileUser->surname,
-            'nickname' => $mobileUser->nickname, 'avatar' => $mobileUser->avatar]);
+            'nickname' => $mobileUser->nickname, 'avatar' => $mobileUser->avatar,'id' => $mobileUser->id]);
     }
 
     public function me()
