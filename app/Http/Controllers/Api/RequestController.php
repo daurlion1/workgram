@@ -46,7 +46,7 @@ class RequestController extends ApiBaseController
                     'errors' => [
                         'Запрос уже существует!'
                     ],
-                    'errorCode' => ErrorCode::RESOURCE_NOT_FOUND
+                    'errorCode' => ErrorCode::ALREADY_REQUESTED
                 ]);
             }
 
