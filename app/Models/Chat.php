@@ -8,7 +8,7 @@ class Chat extends Model
 {
     protected $fillable = [
         'creator_id',
-        'implementor_id',
+        'implementer_id',
 
     ];
 
@@ -21,5 +21,7 @@ class Chat extends Model
     {
         return $this->hasOne(User::class, 'id', 'implementer_id');
     }
+
+
 
 }

@@ -38,6 +38,10 @@ Route::group(['middleware' => 'api'], function () {
 
 
             Route::get('/chats', ['uses' => 'ChatController@getAllChats']);
+            Route::post('/create/chat/with/{implementer_id}', ['uses' => 'ChatController@createChat'])->where('id', '[0-9]+');
+            Route::post('/send/message', ['uses' => 'ChatController@sendMessage']);
+            Route::get('/messages/of/chat/{chat_id}', ['uses' => 'ChatController@getChatMessages'])->where('id', '[0-9]+');
+
 
             Route::get('/users/by/category/{category_id}', ['uses' => 'UserController@getUsersByCategory'])->where('id', '[0-9]+');
 

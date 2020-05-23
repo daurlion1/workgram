@@ -1123,3 +1123,286 @@
         "success": true
     }
 ```
+### Получение списка чатов
+#### URL: http://127.0.0.1:8000/api/chats
+```
+    GET Request
+        
+    Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuc2VuZC5tZVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1Nzk2MjcxNjYsImV4cCI6MTU3OTYzMDc2NiwibmJmIjoxNTc5NjI3MTY2LCJqdGkiOiJPeUg5T3hZcVY2d0d6QllyIiwic3ViIjoxLCJwcnYiOiJlZTVhYzY5NDI5YzU1NmQ3NWRiZTdmZjRlNThiOTdjZDRmNzE0MmViIn0.Ykb0nBteVz3KBVmfxAcPHtgA9JPyfD3CArwSL4P3onA
+
+
+    RESPONSE
+    {
+        "chats": {
+            "current_page": 1,
+            "data": [
+                {
+                    "id": 1,
+                    "creator_id": 1,
+                    "implementer_id": 2,
+                    "created_at": null,
+                    "updated_at": null,
+                    "last_message": " ",
+                    "implementer": {
+                        "id": 2,
+                        "first_name": "Darek",
+                        "email": "daur-lion@mail.ru",
+                        "email_verified_at": null,
+                        "description": "Doctor",
+                        "nickname": "darek01",
+                        "rating_score": 5,
+                        "image_path": "",
+                        "last_name": "Smeet",
+                        "platform": null,
+                        "phone": "77777777"
+                    },
+                    "creator": {
+                        "id": 1,
+                        "first_name": "Adminchik",
+                        "email": "admin@mail.ru",
+                        "email_verified_at": null,
+                        "description": "asdasdasdqweq123",
+                        "nickname": "adminsky",
+                        "rating_score": 2,
+                        "image_path": "",
+                        "last_name": "Admin",
+                        "platform": "IOS",
+                        "phone": null
+                    }
+                },
+                {
+                    "id": 2,
+                    "creator_id": 2,
+                    "implementer_id": 1,
+                    "created_at": null,
+                    "updated_at": null,
+                    "last_message": " ",
+                    "implementer": {
+                        "id": 1,
+                        "first_name": "Adminchik",
+                        "email": "admin@mail.ru",
+                        "email_verified_at": null,
+                        "description": "asdasdasdqweq123",
+                        "nickname": "adminsky",
+                        "rating_score": 2,
+                        "image_path": "",
+                        "last_name": "Admin",
+                        "platform": "IOS",
+                        "phone": null
+                    },
+                    "creator": {
+                        "id": 2,
+                        "first_name": "Darek",
+                        "email": "daur-lion@mail.ru",
+                        "email_verified_at": null,
+                        "description": "Doctor",
+                        "nickname": "darek01",
+                        "rating_score": 5,
+                        "image_path": "",
+                        "last_name": "Smeet",
+                        "platform": null,
+                        "phone": "77777777"
+                    }
+                },
+                {
+                    "id": 9,
+                    "creator_id": 1,
+                    "implementer_id": 21,
+                    "created_at": "2020-05-23 17:48:09",
+                    "updated_at": "2020-05-23 17:48:09",
+                    "last_message": " ",
+                    "implementer": {
+                        "id": 21,
+                        "first_name": "Darek",
+                        "email": "user20@mail.ru",
+                        "email_verified_at": null,
+                        "description": "Doctor",
+                        "nickname": "darek01",
+                        "rating_score": 0,
+                        "image_path": "images/user-default.png",
+                        "last_name": "Smeet",
+                        "platform": "IOS",
+                        "phone": "87479122503"
+                    },
+                    "creator": {
+                        "id": 1,
+                        "first_name": "Adminchik",
+                        "email": "admin@mail.ru",
+                        "email_verified_at": null,
+                        "description": "asdasdasdqweq123",
+                        "nickname": "adminsky",
+                        "rating_score": 2,
+                        "image_path": "",
+                        "last_name": "Admin",
+                        "platform": "IOS",
+                        "phone": null
+                    }
+                }
+            ],
+            "first_page_url": "http://127.0.0.1:8000/api/chats?page=1",
+            "from": 1,
+            "last_page": 1,
+            "last_page_url": "http://127.0.0.1:8000/api/chats?page=1",
+            "next_page_url": null,
+            "path": "http://127.0.0.1:8000/api/chats",
+            "per_page": 10,
+            "prev_page_url": null,
+            "to": 3,
+            "total": 3
+        },
+        "success": true
+    }
+```
+### Создание чата
+#### URL: http://127.0.0.1:8000/api/create/chat/with/10
+````
+    Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuc2VuZC5tZVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1Nzk2MjcxNjYsImV4cCI6MTU3OTYzMDc2NiwibmJmIjoxNTc5NjI3MTY2LCJqdGkiOiJPeUg5T3hZcVY2d0d6QllyIiwic3ViIjoxLCJwcnYiOiJlZTVhYzY5NDI5YzU1NmQ3NWRiZTdmZjRlNThiOTdjZDRmNzE0MmViIn0.Ykb0nBteVz3KBVmfxAcPHtgA9JPyfD3CArwSL4P3onA
+````
+```
+    POST Request:
+    {
+    	
+    }
+
+    
+    Response
+  {
+      "chat": {
+          "id": 10,
+          "creator_id": 1,
+          "implementer_id": 10,
+          "created_at": "2020-05-23 18:36:49",
+          "updated_at": "2020-05-23 18:36:49"
+      },
+      "success": true
+  }
+
+```
+
+### Отправить сообщение
+#### URL: http://127.0.0.1:8000/api/send/message
+````
+    Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuc2VuZC5tZVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1Nzk2MjcxNjYsImV4cCI6MTU3OTYzMDc2NiwibmJmIjoxNTc5NjI3MTY2LCJqdGkiOiJPeUg5T3hZcVY2d0d6QllyIiwic3ViIjoxLCJwcnYiOiJlZTVhYzY5NDI5YzU1NmQ3NWRiZTdmZjRlNThiOTdjZDRmNzE0MmViIn0.Ykb0nBteVz3KBVmfxAcPHtgA9JPyfD3CArwSL4P3onA
+````
+```
+    POST Request:
+    {
+    	"chat_id":2,
+    	"text": "asd"
+    }
+
+    
+    Response
+  {
+      "message": "Сообщение успешно отправленно",
+      "success": true
+  }
+
+```
+
+### Получение сообщений чата
+#### URL: http://127.0.0.1:8000/api/messages/of/chat/1
+```
+    GET Request
+        
+    Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuc2VuZC5tZVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1Nzk2MjcxNjYsImV4cCI6MTU3OTYzMDc2NiwibmJmIjoxNTc5NjI3MTY2LCJqdGkiOiJPeUg5T3hZcVY2d0d6QllyIiwic3ViIjoxLCJwcnYiOiJlZTVhYzY5NDI5YzU1NmQ3NWRiZTdmZjRlNThiOTdjZDRmNzE0MmViIn0.Ykb0nBteVz3KBVmfxAcPHtgA9JPyfD3CArwSL4P3onA
+
+
+    RESPONSE
+    {
+        "messages": {
+            "current_page": 1,
+            "data": [
+                {
+                    "id": 1,
+                    "chat_id": 1,
+                    "author_id": 1,
+                    "text": "hello Dauren",
+                    "image_path": null,
+                    "video_path": null,
+                    "audio_path": null,
+                    "doc_path": null,
+                    "deleted_at": null,
+                    "created_at": "2020-05-23 15:50:12",
+                    "updated_at": "2020-05-23 15:50:12",
+                    "author": {
+                        "id": 1,
+                        "first_name": "Adminchik",
+                        "email": "admin@mail.ru",
+                        "email_verified_at": null,
+                        "description": "asdasdasdqweq123",
+                        "nickname": "adminsky",
+                        "rating_score": 2,
+                        "image_path": "",
+                        "last_name": "Admin",
+                        "platform": "IOS",
+                        "phone": null
+                    }
+                },
+                {
+                    "id": 2,
+                    "chat_id": 1,
+                    "author_id": 1,
+                    "text": "hello Bekza",
+                    "image_path": null,
+                    "video_path": null,
+                    "audio_path": null,
+                    "doc_path": null,
+                    "deleted_at": null,
+                    "created_at": "2020-05-23 15:58:25",
+                    "updated_at": "2020-05-23 15:58:25",
+                    "author": {
+                        "id": 1,
+                        "first_name": "Adminchik",
+                        "email": "admin@mail.ru",
+                        "email_verified_at": null,
+                        "description": "asdasdasdqweq123",
+                        "nickname": "adminsky",
+                        "rating_score": 2,
+                        "image_path": "",
+                        "last_name": "Admin",
+                        "platform": "IOS",
+                        "phone": null
+                    }
+                },
+                {
+                    "id": 6,
+                    "chat_id": 1,
+                    "author_id": 1,
+                    "text": null,
+                    "image_path": null,
+                    "video_path": null,
+                    "audio_path": null,
+                    "doc_path": null,
+                    "deleted_at": null,
+                    "created_at": null,
+                    "updated_at": null,
+                    "author": {
+                        "id": 1,
+                        "first_name": "Adminchik",
+                        "email": "admin@mail.ru",
+                        "email_verified_at": null,
+                        "description": "asdasdasdqweq123",
+                        "nickname": "adminsky",
+                        "rating_score": 2,
+                        "image_path": "",
+                        "last_name": "Admin",
+                        "platform": "IOS",
+                        "phone": null
+                    }
+                }
+            ],
+            "first_page_url": "http://127.0.0.1:8000/api/messages/of/chat/1?page=1",
+            "from": 1,
+            "last_page": 1,
+            "last_page_url": "http://127.0.0.1:8000/api/messages/of/chat/1?page=1",
+            "next_page_url": null,
+            "path": "http://127.0.0.1:8000/api/messages/of/chat/1",
+            "per_page": 10,
+            "prev_page_url": null,
+            "to": 3,
+            "total": 3
+        },
+        "success": true
+    }
+```
