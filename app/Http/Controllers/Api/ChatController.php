@@ -33,6 +33,15 @@ class ChatController extends ApiBaseController
                 if($last_message->text != null){
                     $message = $last_message->text;
                 }
+
+                $chat->message_time = $last_message->created_at;
+
+                if($last_message->author_id == $user->id){
+                    $chat->my_message=true;
+                }
+                else{
+                    $chat->my_message=false;
+                }
             }
             $chat->last_message = $message;
          }
