@@ -24,4 +24,5 @@ class Chat extends Model
 
 
 
+
 }

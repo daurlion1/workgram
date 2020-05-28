@@ -22,7 +22,8 @@ class ChatController extends ApiBaseController
         $perPage = $request->size ? $request->size : 10;
         $chats = Chat::where('creator_id',$user->id)->with('implementer')
                                                     ->orWhere('implementer_id',$user->id)
-                                                    ->with('creator')->paginate($perPage);
+                                                    ->with('creator')
+                                                    ->paginate($perPage);
         foreach ($chats as $chat){
             $last_message_id = Message::where('chat_id',$chat->id)->max('id');
             $message = " ";
@@ -34,7 +35,7 @@ class ChatController extends ApiBaseController
                     $message = $last_message->text;
                 }
 
-                $chat->message_time = $last_message->created_at;
+                $chat->message_time = strval($last_message->created_at);
 
                 if($last_message->author_id == $user->id){
                     $chat->my_message=true;
