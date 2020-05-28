@@ -167,15 +167,16 @@ class ChatController extends ApiBaseController
                     ->orWhere('creator_id',$implementer_id)
                     ->where('implementer_id',$creator_id)
                     ->first();
-        if($user->id == $chat->implementer_id){
-            $chat->companion = User::where('id',$chat->creator_id)->first();
 
-        }
-        else{
-            $chat->companion = User::where('id',$chat->implementer_id)->first();
-        }
 
         if($chat!= null){
+            if($user->id == $chat->implementer_id){
+                $chat->companion = User::where('id',$chat->creator_id)->first();
+
+            }
+            else{
+                $chat->companion = User::where('id',$chat->implementer_id)->first();
+            }
             return $this->successResponse(['data' => $chat]);
         }
         else{
