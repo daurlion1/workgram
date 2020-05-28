@@ -20,19 +20,25 @@ class ChatController extends ApiBaseController
     public function getAllChats(Request $request){
         $user = Auth::user();
         $perPage = $request->size ? $request->size : 10;
-        $chats = Chat::where('creator_id',$user->id)->with('implementer')
+        $chats = Chat::where('creator_id',$user->id)
                                                     ->orWhere('implementer_id',$user->id)
-                                                    ->with('creator')
+
                                                     ->paginate($perPage);
         foreach ($chats as $chat){
             $last_message_id = Message::where('chat_id',$chat->id)->max('id');
-            $message = " ";
+            if($user->id == $chat->implementer_id){
+                $chat->companion = User::where('id',$chat->creator_id)->first();
+
+            }
+            else{
+                $chat->companion = User::where('id',$chat->implementer_id)->first();
+            }
 
 
             if($last_message_id != null){
                 $last_message = Message::find($last_message_id);
                 if($last_message->text != null){
-                    $message = $last_message->text;
+                    $chat->last_message = $last_message->text;
                 }
 
                 $chat->message_time = strval($last_message->created_at);
@@ -44,7 +50,7 @@ class ChatController extends ApiBaseController
                     $chat->my_message=false;
                 }
             }
-            $chat->last_message = $message;
+
          }
 
         return $this->successResponse(['chats' => $chats]);
@@ -113,6 +119,16 @@ class ChatController extends ApiBaseController
         if($chat->creator_id == $user->id or $chat->implementer_id == $user->id ){
 
             $messages = Message::where('chat_id',$chat_id)->with('author')->paginate($perPage);
+            foreach ($messages as $message){
+
+                if($message->author_id == $user->id){
+                    $message->my_message=true;
+                }
+                else{
+                    $message->my_message=false;
+                }
+            }
+
             return $this->successResponse(['messages' => $messages]);
 
 
@@ -151,9 +167,16 @@ class ChatController extends ApiBaseController
                     ->orWhere('creator_id',$implementer_id)
                     ->where('implementer_id',$creator_id)
                     ->first();
+        if($user->id == $chat->implementer_id){
+            $chat->companion = User::where('id',$chat->creator_id)->first();
+
+        }
+        else{
+            $chat->companion = User::where('id',$chat->implementer_id)->first();
+        }
 
         if($chat!= null){
-            return $this->successResponse(['chat' => $chat]);
+            return $this->successResponse(['data' => $chat]);
         }
         else{
             DB::beginTransaction();
@@ -164,8 +187,16 @@ class ChatController extends ApiBaseController
 
                 ]);
 
+                if($user->id == $chat->implementer_id){
+                    $chat->companion = User::where('id',$chat->creator_id)->first();
+
+                }
+                else{
+                    $chat->companion = User::where('id',$chat->implementer_id)->first();
+                }
+
                 DB::commit();
-                return $this->successResponse(['chat' => $chat]);
+                return $this->successResponse(['data' => $chat]);
             } catch(\Exception $exception){
 
                 DB::rollBack();
