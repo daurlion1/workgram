@@ -24,7 +24,7 @@ class ChatController extends ApiBaseController
                                                     ->orWhere('implementer_id',$user->id)
                                                     ->orderBy('updated_at', 'desc')
                                                     ->paginate($perPage);
-        foreach ($chats as $key => $chat){
+        foreach ($chats as $chat){
             $last_message_id = Message::where('chat_id',$chat->id)->max('id');
             if($user->id == $chat->implementer_id){
                 $chat->companion = User::where('id',$chat->creator_id)->first();
@@ -49,9 +49,6 @@ class ChatController extends ApiBaseController
                 else{
                     $chat->my_message=false;
                 }
-            }
-            else{
-                unset($chats[$key]);
             }
 
 
