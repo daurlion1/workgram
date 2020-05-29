@@ -21,7 +21,9 @@ class ChatController extends ApiBaseController
         $user = Auth::user();
         $perPage = $request->size ? $request->size : 10;
         $chats = Chat::where('creator_id',$user->id)
+                                                    ->has('messages')
                                                     ->orWhere('implementer_id',$user->id)
+                                                    ->has('messages')
                                                     ->orderBy('updated_at', 'desc')
                                                     ->paginate($perPage);
 
@@ -190,22 +192,23 @@ class ChatController extends ApiBaseController
         else{
             DB::beginTransaction();
             try{
-                $chat =  Chat::create([
+                $new_chat =  Chat::create([
                     'creator_id' => $creator_id,
                     'implementer_id' => $implementer_id,
 
+
                 ]);
 
-                if($user->id == $chat->implementer_id){
-                    $chat->companion = User::where('id',$chat->creator_id)->first();
+                if($user->id == $new_chat->implementer_id){
+                    $new_chat->companion = User::where('id',$new_chat->creator_id)->first();
 
                 }
                 else{
-                    $chat->companion = User::where('id',$chat->implementer_id)->first();
+                    $new_chat->companion = User::where('id',$new_chat->implementer_id)->first();
                 }
 
                 DB::commit();
-                return $this->successResponse(['data' => $chat]);
+                return $this->successResponse(['data' => $new_chat]);
             } catch(\Exception $exception){
 
                 DB::rollBack();
