@@ -25,12 +25,7 @@ class ChatController extends ApiBaseController
                                                     ->orderBy('updated_at', 'desc')
                                                     ->paginate($perPage);
 
-        foreach ($chats as $key => $chat) {
-            $last_message_id = Message::where('chat_id',$chat->id)->max('id');
-            if($last_message_id == null) {
-                unset($chats[$key]);
-            }
-        }
+
 
 
         foreach ($chats as $chat){
