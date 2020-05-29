@@ -22,7 +22,7 @@ class ChatController extends ApiBaseController
         $perPage = $request->size ? $request->size : 10;
         $chats = Chat::where('creator_id',$user->id)
                                                     ->orWhere('implementer_id',$user->id)
-
+                                                    ->orderBy('updated_at', 'desc')
                                                     ->paginate($perPage);
         foreach ($chats as $key => $chat){
             $last_message_id = Message::where('chat_id',$chat->id)->max('id');
@@ -57,7 +57,7 @@ class ChatController extends ApiBaseController
 
 
          }
-        $chats = collect($chats)->sortBy('message_time')->reverse()->toArray();
+
         return $this->successResponse(['chats' => $chats]);
 
     }
@@ -79,12 +79,14 @@ class ChatController extends ApiBaseController
 
             DB::beginTransaction();
             try{
-                Message::create([
+                $message = Message::create([
                     'chat_id' => $chat_id,
                     'text' => $request->text,
                     'author_id' => $user->id,
 
                 ]);
+                $chat->updated_at = $message->created_at;
+                $chat->save();
 
                 DB::commit();
                 return $this->successResponse(['message' => "Сообщение успешно отправленно"]);
