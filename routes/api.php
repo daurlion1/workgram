@@ -22,6 +22,7 @@ Route::group(['middleware' => 'api'], function () {
 
 
             Route::get('/projects', ['uses' => 'ProjectController@getProjectsByCategory']);
+            Route::get('/all/projects', ['uses' => 'ProjectController@getAllProjects']);
             Route::get('/user/projects/creator', ['uses' => 'ProjectController@getCreatorProjects']);
             Route::get('/user/projects/implementer', ['uses' => 'ProjectController@getImplementerProjects']);
             Route::post('/create/project', ['uses' => 'ProjectController@createProject']);

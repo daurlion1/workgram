@@ -16,7 +16,7 @@ class ProjectController extends ApiBaseController
 {
     public function getProjectsByCategory(Request $request)
     {
-        $user = Auth::user();
+
         $perPage = $request->size ? $request->size : 10;
         if ($request->has('category_id')){
             $projects = Project::where('category_id',$request->category_id)->with('creator','implementer','category')->paginate($perPage);
@@ -24,6 +24,19 @@ class ProjectController extends ApiBaseController
         }
         else{
             $projects = Project::with('creator','implementer','category')->paginate($perPage);
+        }
+        return $this->successResponse(['projects' => $projects]);
+    }
+
+    public function getAllProjects(Request $request)
+    {
+
+        if ($request->has('category_id')){
+            $projects = Project::where('category_id',$request->category_id)->with('creator','implementer','category')->get();
+
+        }
+        else{
+            $projects = Project::with('creator','implementer','category')->get();
         }
         return $this->successResponse(['projects' => $projects]);
     }
