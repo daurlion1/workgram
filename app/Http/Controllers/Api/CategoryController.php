@@ -17,6 +17,12 @@ class CategoryController extends ApiBaseController
         return $this->successResponse(['categories' => $categories]);
     }
 
+    public function getAllCategories(Request $request) {
+
+        $categories = Category::all();
+        return $this->successResponse(['categories' => $categories]);
+    }
+
     public function getUserCategories(Request $request) {
         $perPage = $request->size ? $request->size : 10;
         $user = Auth::user();
